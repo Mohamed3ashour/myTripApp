@@ -1,55 +1,3 @@
-<!--
-    <?php
-
-$server="localhost";
-$username="root";
-$password="root";
-$db="trip_scheduling_system_db";
-                
-$connction =mysqli_connect($server,$username,$password,$db);
-
-
-$startTime="";
-$endTime="";
-$from="";
-$to="";
-$erorrMessage ="";
-$succssMessage="";
-
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $startTime=$_POST["startTime"];
-    $endTime=$_POST["endTime"];
-    $from=$_POST["from"];
-    $to=$_POST["to"];
-     
-    
-    do{
-        /*if( empty($startTime) || empty($endTime) empty($from) || empty($to) ){
-            $erorrMessage = "All the field are required";
-            break;
-        }*/
-        
-        $sql="INSERT INTO trip (startTime,endTime,from,to)" .
-            "VALUES ('$startTime','$endTime','$from','$to')";
-        $result=$connction->query($sql);
-        if(!$result){
-            $erorrMessage="Invalid query :" .$connction->error;
-            break;
-            
-            header("location: home");
-            exit;
-        }
-        
-        $startTime="";
-        $endTime="";
-        $from="";
-        $to="";
-        
-        $succssMessage="Trip added successfuly";
-      }while(false);
-}
-?>
--->
 <!doctype html>     
 <html>   
     <head>
@@ -63,69 +11,43 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <body>
         <div class="container my-5">
             <h2>New Trip</h2> 
-          <!--  
-            <?php
-                if(!empty($erorrMessage)) {
-                    echo "
-                             <div class='alert alert-warning alert-dismissible fade shaw' role='alert'>
-                                <strong>$erorrMessage</strong>
-                                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='close'></button>
-                             </div>
-                    ";
-                }   
-            ?>
-            -->
-            <form method="post">
+            
+            <form #registerform="ngForm" (ngSubmit)="register(registerform)" >
                 <div class="row mp-3">
                     <label class="col-sm-3 col-form-label">Start Time</label>
                     <div class="col mp-6">
-                        <input type="text" class="form-control" name="startTime" value="#">
+                        <input type="datetime" #startTime (ngModel)="startTime" class="form-control" name="startTime" >
                     </div>
                 </div>
                 <br>
                 <div class="row mp-3">
                     <label class="col-sm-3 col-form-label">End Time</label>
                     <div class="col mp-6">
-                        <input type="text" class="form-control" name="endTime" value="#">
+                        <input type="datetime" #endTime (ngModel)="endTime" class="form-control" name="endTime" >
                     </div>
                 </div>
                 <br>
                 <div class="row mp-3">
                     <label class="col-sm-3 col-form-label">From</label>
                     <div class="col mp-6">
-                        <input type="text" class="form-control" name="from" value="#">
+                        <input type="text" #from (ngModel)="from" class="form-control" name="from" >
                     </div>
                 </div>
                 <br>
                 <div class="row mp-3">
                     <label class="col-sm-3 col-form-label">To</label>
                     <div class="col mp-6">
-                        <input type="text" class="form-control" name="to" value="#">
+                        <input type="text" #to (ngModel)="to" class="form-control" name="to" >
                     </div>
                 </div>
-                <!--
-                <?php
-                    if(!empty($succssMessage)){
-                        echo"
-                            <div class='row mp-3'>
-                                <div class='offset-sm-3 col-sm-6'>
-                                    <div class='alert alert-success alert-dismissible fade shaw' role='alert'>
-                                        <strong>$succssMessage</strong>
-                                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='close'></button>
-                                    </div>
-                                </div>
-                            </div>
-                        "; 
-                    } 
-                ?>
-                -->
+                
                 <br>
                 <div class="row mp-3">
                     <div class="offset-sm-3 col-sm-3 d-grid">
                         <button type="submit" class="btn btn-primary" >Submit</button>
                     </div>
                     <div class="col-sm-3 d-grid">
-                        <a class="btn btn-outline-primary" routerLink="/home" role="button">Cancel</a>
+                        <a class="btn btn-outline-primary" routerLink="/home" role="button">Cancel & Back Home</a>
                     </div>
                 </div>
             </form>

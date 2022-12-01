@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TripServiceService } from '../trip-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  tripDetails:any=null;
+
+  constructor(private TripService:TripServiceService) { 
+    this.getTripDetails()
+  }
+
+  getTripDetails(){
+    this.TripService.gitTrip().subscribe(
+      (resp) => {
+        console.log(resp);
+        this.tripDetails=resp;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
 
   ngOnInit(): void {
   }

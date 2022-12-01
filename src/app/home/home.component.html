@@ -12,6 +12,7 @@
             <h1>List of Trips</h1>
             <a class="btn btn-primary"  routerLink="/create"  role="button">New Trip</a>
             <br>
+            
             <table class="table" >
                 <thead>
                     <tr>
@@ -25,56 +26,18 @@
                 </thead>
                 <tbody>
                   
-                  
-                  
-                   <tr>
-                        <td>1</td>
-                        <td>2022-11-11 7:30</td>
-                        <td>2022-11-11 9:30</td>
-                        <td>giza</td>
-                        <td>fayou</td>
+                   <tr *ngFor="let trip of tripDetails">
+                        <td>{{trip.idTrip}}</td>
+                        <td>{{trip.startTime}}</td>
+                        <td>{{trip.endTime}}</td>
+                        <td>{{trip.from}}</td>
+                        <td>{{trip.to}}</td>
                         <td>
                             <a class="btn btn-primary btn-sm" routerLink="/edit">Edit</a>
                             <a class="btn btn-danger btn-sm" routerLink="/delete">Delete</a>
                         </td>
                     </tr>
                   
-                   
-             <!--     <?php
-                    
-                     $server="localhost";
-                     $username="root";
-                     $password="root";
-                     $db="trip_scheduling_system_db";
-                    
-                    $connction =mysqli_connect($server,$username,$password,$db);
-                    if (!$connction) {
-                         die("Connection failed: " );
-                     }
-                    
-                    $sql="SELECT * FROM trip";
-                    $result=$connction->query($sql);
-                    
-                    if(!$result){
-                        die("invalid qury : ".$connction->error);
-                    }
-                    while($row=$result->fetch_assoc()){
-                        echo"
-                          <tr>
-                            <td>$row[idTrip]</td>
-                            <td>$row[startTime]</td>
-                            <td>$row[endTime]</td>
-                            <td>giza</td>
-                            <td>fayou</td>
-                            <td>
-                                <a class='btn btn-primary btn-sm' href='edit?id=$row[idTrip]'>Edit</a>
-                                <a class='btn btn-danger btn-sm' href='delete?id=$row[idTrip]'>Delete</a>
-                            </td>
-                         </tr>
-                        ";
-                    }
-                    
-                    ?>--> 
                 </tbody>
             </table>
         </div>
