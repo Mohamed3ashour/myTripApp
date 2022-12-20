@@ -26,6 +26,19 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  deleteTrip(trip: { idTrip: Uint8Array; }){
+    this.TripService.deleteTrip(trip.idTrip).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.getTripDetails();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+
 
   ngOnInit(): void {
   }

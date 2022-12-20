@@ -34,7 +34,7 @@
                         <td>{{trip.to}}</td>
                         <td>
                             <a class="btn btn-primary btn-sm" routerLink="/edit">Edit</a>
-                            <a class="btn btn-danger btn-sm" routerLink="/delete">Delete</a>
+                            <a class="btn btn-danger btn-sm" (click)="deleteTrip(trip)">Delete</a>
                         </td>
                     </tr>
                   

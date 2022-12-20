@@ -14,4 +14,7 @@ export class TripServiceService {
   public gitTrip(){
     return this.http.get(this.API+ '/getTrip')
   }
+  public deleteTrip(id: BigInteger){
+    return this.http.delete(this.API+ '/deletTrip?idTrip='+ id)
+  }
 }

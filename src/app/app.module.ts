@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
-import { DeleteComponent } from './delete/delete.component';
+//import { DeleteComponent } from './delete/delete.component';
 import { ErrorHandelComponent } from './error-handel/error-handel.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     CreateComponent,
     EditComponent,
-    DeleteComponent,
+   // DeleteComponent,
     ErrorHandelComponent
   ],
   imports: [
